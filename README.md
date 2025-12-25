@@ -119,18 +119,18 @@ The script supports different annotation numbers (20, 30, or 40 annotations per 
 
 ## Applying Error Decomposition to Your Own Task
 
-This section describes how to compute error decomposition metrics for your own ordinal annotation task. 
-The script calculates 5 error decomposition percentages that sum to 1.0:
+This section describes how to compute error-decomposition metrics for your own ordinal-annotation task. 
+The script calculates 5 percentages that sum to 1.0:
 
-1. **Correct Annotation**: Percentage of exact matches between model and human annotations
-2. **Boundary Ambiguity Error (Task)**: Task-inherent errors due to boundary ambiguity
-3. **Conceptual Misidentification Error (Task)**: Task-inherent errors due to conceptual misidentification
-4. **Boundary Ambiguity Error (Model)**: Model-specific errors due to boundary ambiguity
-5. **Conceptual Misidentification Error (Model)**: Model-specific errors due to conceptual misidentification
+- **Correct Annotation**: Percentage of exact matches between model and human annotations
+- **Boundary Ambiguity Error (Task)**: Task-inherent errors due to boundary ambiguity
+- **Conceptual Misidentification Error (Task)**: Task-inherent errors due to conceptual misidentification
+- **Boundary Ambiguity Error (Model)**: Model-specific errors due to boundary ambiguity
+- **Conceptual Misidentification Error (Model)**: Model-specific errors due to conceptual misidentification
 
-#### 1: Prepare Your Data Files
+#### 1.Prepare Your Data Files
 
-You need two CSV files:
+Two CSV files are needed:
 
 **A. Human Annotation File** (`human_annotation.csv`):
 - **Required columns**:
@@ -144,7 +144,7 @@ You need two CSV files:
   - `human_category`: The human-annotated category (groundtruth) for each item
   - `model_category`: The model-predicted category for each item
 
-#### 2: Configure the Script
+#### 2.Configure the Script
 
 1. **Open `calculate_error_decomposition.py`** in a text editor
 
@@ -165,7 +165,7 @@ You need two CSV files:
    - The script will automatically calculate distances between levels based on this ordering
 
 
-#### 3: Run the Script
+#### 3.Run the Script
 
 1. **Run the script**:
    ```bash
