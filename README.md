@@ -18,8 +18,6 @@ The appendix of the paper is available here: [Appendix (PDF)](LAK26_Error_Decomp
 ---
 ## Data Description
 
-This section describes the data files used in this repository and their structure.
-
 ### Dataset Structure
 
 ```
@@ -54,14 +52,9 @@ This section describes the data files used in this repository and their structur
 
 **Format**: CSV files with wide format (one column per taxonomy level)
 
-**File naming convention**: `{Dataset}-All_{N}.csv` where:
-- `{Dataset}`: Dataset name (Bloom, MathDial, Uptake, GUG)
-- `{N}`: Number of annotated items (20, 30, or 40)
-
 **Required columns**:
 - `Annotator`: Identifier for the annotator (e.g., "groundtruth", "A1", "A2")
-- `ID`: Unique identifier for each learning outcome/item
-- `Learning_outcome`: Text description of the item (optional, for reference)
+- `ID`: Unique identifier for each annotation item
 - **Taxonomy level columns**: One column per taxonomy level with binary values (1 = selected, empty/0 = not selected)
 
 **Example structure (Bloom taxonomy)**:
@@ -73,30 +66,16 @@ A1,1,Develop a plan for their first internship.,,,,1,,
 A2,1,Develop a plan for their first internship.,,,,,,1
 ```
 
-**Taxonomy levels by dataset**:
-- **Bloom**: Remember, Understand, Apply, Analyze, Evaluate, Create (6 levels)
-- **MathDial**: Focus, Probing, Telling, Generic (4 levels)
-- **Uptake**: Low, Mid, High (3 levels)
-- **GUG**: 1, 2, 3, 4 (4 levels, numeric)
-
-**Agreement files**: Files named `{dataset}_agreement_{N}.csv` contain inter-annotator agreement metrics (Krippendorff's alpha) calculated for each dataset.
-
-### Model Performance Files
+### Model Annotation Files
 
 **Format**: CSV files with model predictions
 
-**File naming convention**: `{dataset}_full.csv` for detailed predictions, `{dataset}_summary.csv` for aggregated statistics
-
 **Required columns**:
-- `outcome_id`: Unique identifier matching the `ID` in human annotation files
-- `learning_outcome`: Text description (optional, for reference)
+- `ID`: Unique identifier matching the `ID` in human annotation files
 - `human_category`: The human-annotated category (ground truth)
-- `model_category`: The model-predicted category
-- `exact_match`: Boolean indicating if prediction matches ground truth
-- `Technique`: Prompting strategy used (e.g., "Zero-shot", "Few-shot", "Chain-of-Thought")
-- `model`: Model name (e.g., "GPT-3.5", "GPT-4")
+- `model_category`: The model-predicted category (model prediction)
 
-**Example structure**:
+**Example structure (Bloom taxonomy)**:
 ```csv
 outcome_id,learning_outcome,human_category,model_category,exact_match,Technique,model
 0,"Demonstrate research skills...","apply","analyze",False,"Zero-shot","GPT-3.5"
