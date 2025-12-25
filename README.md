@@ -19,98 +19,46 @@ The appendix of the paper is available here: [Appendix (PDF)](LAK26_Error_Decomp
 ## Data Description
 
 ### Dataset Structure
-
 ```
-├── human_annotation/          # Human annotation data files
-│   ├── Bloom-All_20.csv       # Bloom taxonomy annotations (20 items)
-│   ├── Bloom-All_30.csv       # Bloom taxonomy annotations (30 items)
-│   ├── Bloom-All_40.csv       # Bloom taxonomy annotations (40 items)
-│   ├── MathDial-All_20.csv    # MathDial taxonomy annotations (20 items)
-│   ├── MathDial-All_30.csv    # MathDial taxonomy annotations (30 items)
-│   ├── MathDial-All_40.csv    # MathDial taxonomy annotations (40 items)
-│   ├── Uptake-All_20.csv      # Uptake taxonomy annotations (20 items)
-│   ├── Uptake-All_30.csv      # Uptake taxonomy annotations (30 items)
-│   ├── Uptake-All_40.csv      # Uptake taxonomy annotations (40 items)
-│   ├── GUG-All_20.csv         # GUG taxonomy annotations (20 items)
-│   ├── GUG-All_30.csv         # GUG taxonomy annotations (30 items)
-│   └── GUG-All_40.csv         # GUG taxonomy annotations (40 items)
-├── model_annotation/          # Model annotation data files
-│   ├── bloom_full.csv         # Full model predictions for Bloom
-│   ├── gug_full.csv           # Full model predictions for GUG
-│   ├── mathdial_full.csv      # Full model predictions for MathDial
-│   ├── uptake_full.csv        # Full model predictions for Uptake
-│   ├── bloom_summary.csv      # Summary statistics for Bloom
-│   ├── gug_summary.csv        # Summary statistics for GUG
-│   ├── mathdial_summary.csv   # Summary statistics for MathDial
-│   └── uptake_summary.csv     # Summary statistics for Uptake
-└── error_decomposition_sample_data/  # Sample data for applying error decomposition to a new data annotation task.
-    ├── human_annotation.csv   # Example human annotations
-    └── model_annotation.csv    # Example model predictions
-```
-
-### Human Annotation Files
-
-**Format**: CSV files with wide format (one column per taxonomy level)
-
-**Required columns**:
-- `Annotator`: Identifier for the annotator (e.g., "groundtruth", "A1", "A2")
-- `ID`: Unique identifier for each annotation item
-- **Taxonomy level columns**: One column per taxonomy level with binary values (1 = selected, empty/0 = not selected)
-
-**Example structure (Bloom taxonomy)**:
-```csv
-Annotator,ID,Learning_outcome,Remember,Understand,Apply,Analyze,Evaluate,Create
-groundtruth,1,Develop a plan for their first internship.,,,,,,1
-groundtruth,2,Evaluate design options.,,,,,1,
-A1,1,Develop a plan for their first internship.,,,,1,,
-A2,1,Develop a plan for their first internship.,,,,,,1
+├── human_annotation/                 # Human annotation data files (for replicating paper results)
+│   ├── Bloom-All_20.csv                # Bloom taxonomy annotations (20 items)
+│   ├── Bloom-All_30.csv                # Bloom taxonomy annotations (30 items)
+│   ├── Bloom-All_40.csv                # Bloom taxonomy annotations (40 items)
+│   ├── MathDial-All_20.csv             # MathDial taxonomy annotations (20 items)
+│   ├── MathDial-All_30.csv             # MathDial taxonomy annotations (30 items)
+│   ├── MathDial-All_40.csv             # MathDial taxonomy annotations (40 items)
+│   ├── Uptake-All_20.csv               # Uptake taxonomy annotations (20 items)
+│   ├── Uptake-All_30.csv               # Uptake taxonomy annotations (30 items)
+│   ├── Uptake-All_40.csv               # Uptake taxonomy annotations (40 items)
+│   ├── GUG-All_20.csv                  # GUG taxonomy annotations (20 items)
+│   ├── GUG-All_30.csv                  # GUG taxonomy annotations (30 items)
+│   └── GUG-All_40.csv                  # GUG taxonomy annotations (40 items)
+├── model_annotation/                 # Model annotation data files (for replicating paper results)
+│   ├── bloom_full.csv                  # Full model predictions for Bloom
+│   ├── gug_full.csv                    # Full model predictions for GUG
+│   ├── mathdial_full.csv               # Full model predictions for MathDial
+│   ├── uptake_full.csv                 # Full model predictions for Uptake
+│   ├── bloom_summary.csv               # Summary statistics for Bloom
+│   ├── gug_summary.csv                 # Summary statistics for GUG
+│   ├── mathdial_summary.csv            # Summary statistics for MathDial
+│   └── uptake_summary.csv              # Summary statistics for Uptake
+└── error_decomposition_sample_data/  # Sample data (for applying error decomposition to a new data annotation task)
+    ├── human_annotation.csv            # Example human annotations
+    └── model_annotation.csv            # Example model predictions
 ```
 
-### Model Annotation Files
-
-**Format**: CSV files with model predictions
-
-**Required columns**:
-- `ID`: Unique identifier matching the `ID` in human annotation files
-- `human_category`: The human-annotated category (ground truth)
-- `model_category`: The model-predicted category (model prediction)
-
-**Example structure (Bloom taxonomy)**:
-```csv
-outcome_id,learning_outcome,human_category,model_category,exact_match,Technique,model
-0,"Demonstrate research skills...","apply","analyze",False,"Zero-shot","GPT-3.5"
-1,"Identify local, national...","remember","analyze",False,"Zero-shot","GPT-3.5"
-2,"Assess space-time coding...","evaluate","analyze",False,"Zero-shot","GPT-3.5"
-```
-
-### Sample Data Files (for Part 2)
-
-Located in `error_decomposition_sample_data/`:
+### Data Preparation for applying error decomposition to their own tasks
+We provide sample data templates in error_decomposition_sample_data/ for applying the error decomposition method to new annotation tasks:
 
 - **`human_annotation.csv`**: Example human annotation file using Bloom taxonomy format (20 items, 2 annotators + ground truth)
-- **`model_annotation.csv`**: Example model prediction file (150 items) with `human_category` and `model_category` columns
+- **`model_annotation.csv`**: Example model prediction file (150 items) with `human annotation` and `model annotation`
 
-These files serve as templates for users who want to apply error decomposition to their own tasks.
-
-### Data Requirements Summary
-
-For **Part 1** (replicating paper results):
-- Human annotation files: `human_annotation/{Dataset}-All_{N}.csv`
-- Agreement files: `human_annotation/{dataset}_agreement_{N}.csv`
-- Model performance files: `performance_summary/{dataset}_full.csv`
-
-For **Part 2** (your own task):
-- Human annotation file: CSV with `Annotator`, `ID`, and taxonomy level columns
-- Model annotation file: CSV with `human_category` and `model_category` columns
-
----
 
 ## Setup
 
 ### Prerequisites
 
 - Python 3.7 or higher
-- pip (Python package installer)
 
 ### Installation
 
@@ -134,12 +82,9 @@ For **Part 2** (your own task):
    ```bash
    pip install -r requirements.txt
    ```
-
 ---
 
-
-
-## Part 1: Replicating Paper Results
+## Replicating Paper Results
 
 This section explains how to run `paper_results.py` to generate the 5 figures from the paper.
 
