@@ -119,11 +119,7 @@ The script supports different annotation numbers (20, 30, or 40 annotations per 
 
 ## Applying Error Decomposition to Your Own Task
 
-This section describes how to compute error decomposition metrics for your own ordinal annotation task.
-
-### Overview
-
-The script calculates 5 error decomposition percentages that sum to 1.0:
+This section describes how to compute error decomposition metrics for your own ordinal annotation task. The script calculates 5 error decomposition percentages that sum to 1.0:
 1. **Correct Annotation**: Percentage of exact matches between model and human annotations
 2. **Boundary Ambiguity Error (Task)**: Task-inherent errors due to boundary ambiguity
 3. **Conceptual Misidentification Error (Task)**: Task-inherent errors due to conceptual misidentification
