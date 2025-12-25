@@ -119,7 +119,9 @@ The script supports different annotation numbers (20, 30, or 40 annotations per 
 
 ## Applying Error Decomposition to Your Own Task
 
-This section describes how to compute error decomposition metrics for your own ordinal annotation task. The script calculates 5 error decomposition percentages that sum to 1.0:
+This section describes how to compute error decomposition metrics for your own ordinal annotation task. 
+The script calculates 5 error decomposition percentages that sum to 1.0:
+
 1. **Correct Annotation**: Percentage of exact matches between model and human annotations
 2. **Boundary Ambiguity Error (Task)**: Task-inherent errors due to boundary ambiguity
 3. **Conceptual Misidentification Error (Task)**: Task-inherent errors due to conceptual misidentification
@@ -146,25 +148,18 @@ You need two CSV files:
 
 1. **Open `calculate_error_decomposition.py`** in a text editor
 
-2. **Update the file paths** (around lines 29-30):
-   ```python
-   HUMAN_ANNOTATION_FILE = "path/to/your/human_annotation.csv"
-   MODEL_ANNOTATION_FILE = "path/to/your/model_annotation.csv"
-   ```
-
-3. **Set the number of annotations** (around lines 37-38):
+2. **Set the number of annotations** (around lines 37-38):
    ```python
    NUM_HUMAN_ANNOTATIONS = 20  # Change to match your human annotation count
    NUM_MODEL_ANNOTATIONS = 150  # Change to match your model annotation count
    ```
-   *Note: These are for reference/info only and don't affect calculations*
 
 4. **Define your taxonomy levels** (around line 43):
    ```python
    TAXONOMY_LEVELS = ["remember", "understand", "apply", "analyze", "evaluate", "create"]
    ```
    
-   **Important**: 
+   **Note**: 
    - List levels in order from **lowest to highest** (this defines the ordinal structure)
    - Use **lowercase** names (the script normalizes all labels to lowercase)
    - The script will automatically calculate distances between levels based on this ordering
@@ -199,12 +194,6 @@ You need two CSV files:
 ## Citation
 
 If you use this code in your research, please cite the original paper.
-
----
-
-## License
-
-[Add your license information here]
 
 ---
 
