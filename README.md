@@ -7,9 +7,6 @@ Zhen Xu, Vedant Khatri, Diana Dai, Xiner Liu, Siyan, Xuanming, Renzhe Yu. (2025)
 
 ## Appendix
 The appendix of the paper is available here: [Appendix (PDF)](LAK26_Error_Decomposition_appendix.pdf)
-# Error Decomposition for Ordinal Classification Tasks
-
-This repository contains Python implementations for analyzing error decomposition in ordinal classification tasks, as described in the paper. The code calculates task-inherent errors (due to human annotation ambiguity) versus model-specific errors.
 
 ## Table of Contents
 
@@ -19,65 +16,36 @@ This repository contains Python implementations for analyzing error decompositio
 4. [Part 2: Applying Error Decomposition to Your Own Task](#part-2-applying-error-decomposition-to-your-own-task)
 
 ---
-
-## Setup
-
-### Prerequisites
-
-- Python 3.7 or higher
-- pip (Python package installer)
-
-### Installation
-
-1. **Clone or download this repository**
-
-2. **Create a virtual environment** (recommended):
-   ```bash
-   python3 -m venv venv
-   ```
-
-3. **Activate the virtual environment**:
-   ```bash
-   # On macOS/Linux:
-   source venv/bin/activate
-   
-   # On Windows:
-   venv\Scripts\activate
-   ```
-
-4. **Install required packages**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
----
-
 ## Data Description
 
 This section describes the data files used in this repository and their structure.
 
-### Directory Structure
+### Dataset Structure
 
 ```
-Lak_code/
 ├── human_annotation/          # Human annotation data files
 │   ├── Bloom-All_20.csv       # Bloom taxonomy annotations (20 items)
 │   ├── Bloom-All_30.csv       # Bloom taxonomy annotations (30 items)
 │   ├── Bloom-All_40.csv       # Bloom taxonomy annotations (40 items)
-│   ├── bloom_agreement_20.csv # Bloom inter-annotator agreement metrics
-│   ├── MathDial-All_20.csv    # MathDial taxonomy annotations
-│   ├── mathdial_agreement_20.csv
-│   ├── Uptake-All_20.csv      # Uptake taxonomy annotations
-│   ├── uptake_agreement_20.csv
-│   ├── GUG-All_20.csv         # GUG taxonomy annotations
-│   └── gug_agreement_20.csv
-├── performance_summary/       # Model performance data files
+│   ├── MathDial-All_20.csv    # MathDial taxonomy annotations (20 items)
+│   ├── MathDial-All_30.csv    # MathDial taxonomy annotations (30 items)
+│   ├── MathDial-All_40.csv    # MathDial taxonomy annotations (40 items)
+│   ├── Uptake-All_20.csv      # Uptake taxonomy annotations (20 items)
+│   ├── Uptake-All_30.csv      # Uptake taxonomy annotations (30 items)
+│   ├── Uptake-All_40.csv      # Uptake taxonomy annotations (40 items)
+│   ├── GUG-All_20.csv         # GUG taxonomy annotations (20 items)
+│   ├── GUG-All_30.csv         # GUG taxonomy annotations (30 items)
+│   └── GUG-All_40.csv         # GUG taxonomy annotations (40 items)
+├── model_annotation/          # Model annotation data files
 │   ├── bloom_full.csv         # Full model predictions for Bloom
-│   ├── bloom_summary.csv      # Summary statistics for Bloom
+│   ├── gug_full.csv           # Full model predictions for GUG
 │   ├── mathdial_full.csv      # Full model predictions for MathDial
 │   ├── uptake_full.csv        # Full model predictions for Uptake
-│   └── gug_full.csv           # Full model predictions for GUG
-└── error_decomposition_sample_data/  # Sample data for Part 2
+│   ├── bloom_summary.csv      # Summary statistics for Bloom
+│   ├── gug_summary.csv        # Summary statistics for GUG
+│   ├── mathdial_summary.csv   # Summary statistics for MathDial
+│   └── uptake_summary.csv     # Summary statistics for Uptake
+└── error_decomposition_sample_data/  # Sample data for applying error decomposition to a new data annotation task.
     ├── human_annotation.csv   # Example human annotations
     └── model_annotation.csv    # Example model predictions
 ```
@@ -157,6 +125,40 @@ For **Part 2** (your own task):
 - Model annotation file: CSV with `human_category` and `model_category` columns
 
 ---
+
+## Setup
+
+### Prerequisites
+
+- Python 3.7 or higher
+- pip (Python package installer)
+
+### Installation
+
+1. **Clone or download this repository**
+
+2. **Create a virtual environment** (recommended):
+   ```bash
+   python3 -m venv venv
+   ```
+
+3. **Activate the virtual environment**:
+   ```bash
+   # On macOS/Linux:
+   source venv/bin/activate
+   
+   # On Windows:
+   venv\Scripts\activate
+   ```
+
+4. **Install required packages**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+
 
 ## Part 1: Replicating Paper Results
 
