@@ -17,8 +17,6 @@ The appendix of the paper is available here: [Appendix (PDF)](LAK26_Error_Decomp
 
 ---
 ## Data Description
-
-### Dataset Structure
 ```
 ├── human_annotation/                 # Human annotation data files (for replicating paper results)
 │   ├── Bloom-All_20.csv                # Bloom taxonomy annotations (20 items)
@@ -43,16 +41,9 @@ The appendix of the paper is available here: [Appendix (PDF)](LAK26_Error_Decomp
 │   ├── mathdial_summary.csv            # Summary statistics for MathDial
 │   └── uptake_summary.csv              # Summary statistics for Uptake
 └── error_decomposition_sample_data/  # Sample data (for applying error decomposition to a new data annotation task)
-    ├── human_annotation.csv            # Example human annotations
-    └── model_annotation.csv            # Example model predictions
+    ├── human_annotation.csv            # Example human annotation file using Bloom taxonomy format (20 items, 2 annotators + ground truth)
+    └── model_annotation.csv            # Example model prediction file (150 human annotation + model annotation)
 ```
-
-### Data Preparation for applying error decomposition to their own tasks
-We provide sample data templates in error_decomposition_sample_data/ for applying the error decomposition method to new annotation tasks:
-
-- **`human_annotation.csv`**: Example human annotation file using Bloom taxonomy format (20 items, 2 annotators + ground truth)
-- **`model_annotation.csv`**: Example model prediction file (150 human annotation + model annotation)
-
 
 ## Setup
 
@@ -128,7 +119,7 @@ The script supports different annotation numbers (20, 30, or 40 annotations per 
 
 ## Applying Error Decomposition to Your Own Task
 
-This section explains how to calculate error decomposition percentages for your own ordinal annotation task.
+This section describes how to compute error decomposition metrics for your own ordinal annotation task.
 
 ### Overview
 
