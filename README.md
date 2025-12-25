@@ -10,10 +10,10 @@ The appendix of the paper is available here: [Appendix (PDF)](LAK26_Error_Decomp
 
 ## Table of Contents
 
-1. [Setup](#setup)
-2. [Data Description](#data-description)
-3. [Part 1: Replicating Paper Results](#part-1-replicating-paper-results)
-4. [Part 2: Applying Error Decomposition to Your Own Task](#part-2-applying-error-decomposition-to-your-own-task)
+1. [Data Description](#data-description)
+2. [Setup](#setup)
+4. [Replicating Paper Results](#replicating-paper-results)
+5. [Applying Error Decomposition to Your Own Task](#applying-error-decomposition-to-your-own-task)
 
 ---
 ## Data Description
